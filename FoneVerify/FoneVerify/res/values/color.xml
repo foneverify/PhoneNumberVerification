@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background_color">#6A265B</color>
+    <color name="white_color">#ffffff</color>
+    <color name="profile_gold">#FFCC00</color>
+    <!-- <color name="black_dark">#161616</color>
+    <color name="gray_dark">#A9A9A9</color>    
+    <color name="deep_sky_blue">#3479DA</color> -->
+
+</resources>

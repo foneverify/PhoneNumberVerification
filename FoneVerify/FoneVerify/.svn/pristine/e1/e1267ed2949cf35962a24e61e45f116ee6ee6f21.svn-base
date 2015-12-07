@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="edittext_phonewidth">250dp</dimen>
+    <dimen name="edittext_margintop">10dp</dimen>
+    <dimen name="button_textsize">20sp</dimen>
+    <dimen name="mobilenumber_textsize">17sp</dimen>
+    <dimen name="button_width">200dp</dimen>
+    <dimen name="otpedittext_resolution">50dp</dimen>
+    <dimen name="otpedittext_paddingleft">20dp</dimen>
+    <dimen name="otpedittext_marginleft">20dp</dimen>
+    <dimen name="title_textsize">15sp</dimen>
+    <dimen name="success_image">100dp</dimen>
+    <dimen name="otptext_margin">20dp</dimen>
+
+</resources>

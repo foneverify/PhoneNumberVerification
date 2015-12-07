@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Foneverify</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="phone_number">Mobile Number</string>
+    <string name="customer_id">CustomerId</string>
+    <string name="country_code">Country Code</string>
+    <string name="app_key">App Key</string>
+    <string name="enter_number">Please enter Country Code and Mobile No</string>
+    <string name="submit">Submit</string>
+    <string name="verify">Verify</string>
+    <string name="verify_text">Please enter the OTP code that, we have sent to your phone through SMS</string>
+    <string name="successscreen_text">Verified !!!</string>   
+    <string name="otp_url">Otp Url</string>
+    <string name="otpverify_url">Otp Verify Url</string>
+    <string name="clicktocall_text">Please click to call the below number</string>
+     <string name="failed_text">Please verify again !!!</string> 
+     <string name="try_again">Try Again</string>
+     <string name="fail_text">Application error. please restart your device and try again.If you continue to face this issue please contact</string>
+     
+    
+</resources>

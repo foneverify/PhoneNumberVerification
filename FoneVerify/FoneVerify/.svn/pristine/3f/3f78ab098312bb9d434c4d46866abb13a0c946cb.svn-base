@@ -1,0 +1,47 @@
+package com.u2opia.foneverify.utility;
+
+public class Constant {
+
+	// Gaurav Machine
+	// public static final String OTPVERIFY_URLS =
+	// "http://172.21.21.100:8080/U2opia_Verify-1.0/v1.0/flow/sms/update";
+	// public static final String GET_OTP_URLS =
+	// "http://172.21.21.100:8080/U2opia_Verify-1.0/v1.0/flow/sms";
+	// Aseem Machine
+	/*
+	 * public static final String OTPVERIFY_URLS =
+	 * "http://172.21.21.108:8080/U2opia_Verify-1.0/v1.0/flow/sms/update";
+	 * public static final String GET_OTP_URLS =
+	 * "http://172.21.21.108:8080/U2opia_Verify-1.0/v1.0/flow/sms";
+	 */
+
+	public static final String CUSTOMER_ID_PREFERENCE = "customerIdPreference";
+	public static final String CUSTOMER_ID = "customerId";
+	public static final String MSISDN_PREFERENCE = "msisdnPreference";
+	public static final String MSISDN = "msisdn";
+	public static final String APPKEY_PREFERENCE = "appKeyPreference";
+	public static final String APPKEY = "appKey";
+	public static final String COUNTRY_CODE_PREFERENCE = "countryCodePreference";
+	public static final String COUNTRY_CODE = "countryCode";
+	public static final String VERIFICATION_ID_PREFERENCE = "verificationIdPreference";
+	public static final String VERIFICATION_ID = "verificationId";
+	public static final String OTP_URL_PREFERANCE = "otpUrlPreference";
+	public static final String OTP_URL = "otpUrl";
+	public static final String OTPVERIFY_URL_PREFERANCE = "otpVerifyUrlPreference";
+	public static final String OTPVERIFY_URL = "otpVerifyUrl";
+
+	// Error messages
+	public static final String ERRORCODE_500 = "Unknown Response. Please Try again later.";
+	public static final String ERRORCODE_501 = "Invalid Customer id";
+	public static final String ERRORCODE_502 = "Invalid app key";
+	public static final String ERRORCODE_503 = "Invalid ISO country code";
+	public static final String ERRORCODE_504 = "Invalid mobile number format";
+	public static final String ERRORCODE_505 = "Invalid verification id";
+	public static final String ERRORCODE_506 = "Request already exists";
+	public static final String ERRORCODE_700 = "Verification Failed";
+	public static final String ERRORCODE_701 = "Trying fallback";
+	public static final String ERRORCODE_702 = "Wrong OTP provided";
+	public static final String ERRORCODE_703 = "This mobile number already verified";
+	public static final String ERRORCODE_704 = "This is not valid request";
+
+}

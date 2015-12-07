@@ -1,0 +1,45 @@
+package com.u2opia.foneverify.utility;
+
+public class ErrorCode {
+
+	  public static String errorMessage(String strErrorCode){
+	    String strMessage = "";
+	    if(strErrorCode == "500" || strErrorCode.equalsIgnoreCase("500") ){
+	      strMessage = Constant.ERRORCODE_500;
+	    }          
+	    else if(strErrorCode == "501" || strErrorCode.equalsIgnoreCase("501")){
+	      strMessage = Constant.ERRORCODE_501;
+	    }          
+	    else if(strErrorCode == "502" || strErrorCode.equalsIgnoreCase("502")){
+	      strMessage = Constant.ERRORCODE_502;
+	    }          
+	    else if(strErrorCode == "503" || strErrorCode.equalsIgnoreCase("503")){
+	      strMessage = Constant.ERRORCODE_503;
+	    }
+	    else if(strErrorCode == "504" || strErrorCode.equalsIgnoreCase("504")){
+	      strMessage = Constant.ERRORCODE_504;
+	    }
+	    else if(strErrorCode == "505" || strErrorCode.equalsIgnoreCase("505")){
+	      strMessage = Constant.ERRORCODE_505;
+	    }
+	    else if(strErrorCode == "506" || strErrorCode.equalsIgnoreCase("506")){
+	      strMessage = Constant.ERRORCODE_506;
+	    }          
+	    if(strErrorCode == "700" || strErrorCode.equalsIgnoreCase("700")){
+	      strMessage = Constant.ERRORCODE_700;
+	    }          
+	    else if(strErrorCode == "701" || strErrorCode.equalsIgnoreCase("701")){
+	      strMessage = Constant.ERRORCODE_701;
+	    }          
+	    else if(strErrorCode == "702" || strErrorCode.equalsIgnoreCase("702")){
+	      strMessage = Constant.ERRORCODE_702;
+	    }          
+	    else if(strErrorCode == "703" || strErrorCode.equalsIgnoreCase("703")){
+	      strMessage = Constant.ERRORCODE_703;
+	    }
+	    else if(strErrorCode == "704" || strErrorCode.equalsIgnoreCase("704")){
+	      strMessage = Constant.ERRORCODE_704;	     
+	  }
+	  return strMessage;
+	  }  
+}

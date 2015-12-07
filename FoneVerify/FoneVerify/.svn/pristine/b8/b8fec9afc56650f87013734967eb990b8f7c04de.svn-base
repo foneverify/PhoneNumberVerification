@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_color"
+     >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_number" 
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/title_textsize"
+        android:textColor="@color/white_color"
+        />
+    
+    
+     <EditText
+        android:id="@+id/otpurl_edittext"
+        android:layout_width="@dimen/edittext_phonewidth"
+        android:layout_height="wrap_content"
+        android:hint="@string/otp_url" 
+        android:layout_below="@id/top_text"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"        
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        />
+     <EditText
+        android:id="@+id/otpverifyurl_edittext"
+        android:layout_width="@dimen/edittext_phonewidth"
+        android:layout_height="wrap_content"
+        android:hint="@string/otpverify_url" 
+        android:layout_below="@id/otpurl_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"        
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        />
+    
+    
+    
+    <EditText
+        android:id="@+id/customerid_edittext"
+        android:layout_width="@dimen/edittext_phonewidth"
+        android:layout_height="wrap_content"
+        android:hint="@string/customer_id" 
+        android:layout_below="@id/otpverifyurl_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"        
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        />
+    <EditText
+        android:id="@+id/countrycode_edittext"
+        android:layout_width="@dimen/edittext_phonewidth"
+        android:layout_height="wrap_content"
+        android:hint="@string/country_code" 
+        android:layout_below="@id/customerid_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"        
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        />
+    
+    
+    <EditText
+        android:id="@+id/appkey_edittext"
+        android:layout_width="@dimen/edittext_phonewidth"
+        android:layout_height="wrap_content"
+        android:hint="@string/app_key" 
+        android:layout_below="@id/countrycode_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"        
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        />
+
+    <EditText
+        android:id="@+id/mobile_edittext"
+        android:layout_width="@dimen/edittext_phonewidth"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone_number" 
+        android:layout_below="@id/appkey_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"
+        android:phoneNumber="true"
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/submit" 
+        android:layout_below="@id/mobile_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/button_textsize"/>
+    </RelativeLayout>
+
+</LinearLayout>

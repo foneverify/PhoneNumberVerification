@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_color" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|center_horizontal" >
+
+        <TextView
+            android:id="@+id/top_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/otptext_margin"
+            android:layout_marginRight="@dimen/otptext_margin"
+            android:text="@string/verify_text"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/title_textsize" />
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_text"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:gravity="center_horizontal" >
+
+            <EditText
+                android:id="@+id/otpone_edittext"
+                android:layout_width="@dimen/otpedittext_resolution"
+                android:layout_height="@dimen/otpedittext_resolution"
+                android:maxLength="1"
+                android:paddingLeft="@dimen/otpedittext_paddingleft" 
+                android:nextFocusDown="@+id/otptwo_edittext"/>
+
+            <EditText
+                android:id="@+id/otptwo_edittext"
+                android:layout_width="@dimen/otpedittext_resolution"
+                android:layout_height="@dimen/otpedittext_resolution"
+                android:layout_marginLeft="@dimen/otpedittext_marginleft"
+                android:layout_toRightOf="@id/otpone_edittext"
+                android:maxLength="1"
+                android:paddingLeft="@dimen/otpedittext_paddingleft" 
+                android:nextFocusDown="@+id/otpthree_edittext"/>
+
+            <EditText
+                android:id="@+id/otpthree_edittext"
+                android:layout_width="@dimen/otpedittext_resolution"
+                android:layout_height="@dimen/otpedittext_resolution"
+                android:layout_marginLeft="@dimen/otpedittext_marginleft"
+                android:layout_toRightOf="@id/otptwo_edittext"
+                android:maxLength="1"
+                android:paddingLeft="@dimen/otpedittext_paddingleft" 
+                android:nextFocusDown="@+id/otpfour_edittext"/>
+
+            <EditText
+                android:id="@+id/otpfour_edittext"
+                android:layout_width="@dimen/otpedittext_resolution"
+                android:layout_height="@dimen/otpedittext_resolution"
+                android:layout_marginLeft="@dimen/otpedittext_marginleft"
+                android:layout_toRightOf="@id/otpthree_edittext"
+                android:maxLength="1"
+                android:paddingLeft="@dimen/otpedittext_paddingleft" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/time_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:text=""
+            android:textColor="@color/profile_gold"
+            android:textSize="@dimen/title_textsize" />
+
+        <Button
+            android:id="@+id/button_verify"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_textview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:text="@string/verify"
+            android:textSize="@dimen/button_textsize" />
+    </RelativeLayout>
+
+</LinearLayout>

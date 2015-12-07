@@ -1,0 +1,12 @@
+package com.u2opia.foneverify;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class SuccessScreen extends Activity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.success_screen);
+		}
+}

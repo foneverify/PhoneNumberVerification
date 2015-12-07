@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    
+     >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        
+        
+        <ImageView
+        android:id="@+id/foneverify_image"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="@drawable/foneverify_logo"
+        android:layout_centerHorizontal="true"/>
+        
+    <TextView
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_number" 
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/title_textsize"        
+        android:layout_below="@id/foneverify_image"/>
+    
+     <EditText
+        android:id="@+id/countrycode_edittext"
+        android:layout_width="@dimen/edittext_countrywidth"
+        android:layout_height="wrap_content"        
+        android:layout_below="@id/top_text"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_marginLeft="20dp"       
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        android:gravity="center_vertical|center_horizontal"/>
+    <EditText
+        android:id="@+id/mobile_edittext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone_number" 
+        android:layout_below="@id/top_text"
+        android:layout_marginTop="@dimen/edittext_margintop"        
+        android:phoneNumber="true"
+        android:singleLine="true"
+        android:textSize="@dimen/mobilenumber_textsize"
+        android:layout_toRightOf="@id/countrycode_edittext"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical|center_horizontal"/>
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/submit" 
+        android:layout_below="@id/mobile_edittext"
+        android:layout_marginTop="@dimen/edittext_margintop"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/button_textsize"/>
+    </RelativeLayout>
+
+</LinearLayout>

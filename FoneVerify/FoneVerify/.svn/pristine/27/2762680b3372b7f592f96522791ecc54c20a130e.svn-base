@@ -1,0 +1,300 @@
+package com.u2opia.foneverify;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request.Method;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.u2opia.foneverify.utility.ConnectivityUtils;
+import com.u2opia.foneverify.utility.ErrorCode;
+import com.u2opia.foneverify.utility.Preferances;
+
+public class OTPScreen extends Activity implements OnClickListener {
+
+	private EditText mPinOneEditText, mPinTwoEditText, mPinThreeEditText,
+			mPinFourEditText;
+	private TextView mTimeTextView;
+	private Button mVerifyBtn;
+	private String mStrErrorMessage, mStrAppKey;
+	private String mStrCustomerId, mStrCountryCode;
+	private static final String TAG = "OTPScreen";
+	private String mStrVerificationId, mStrSmsCLI, mStrResponseMobileNumber;
+	private long mLongTimeout;
+	private String mStrPinOne, mStrPinTwo, mStrPinThree, mStrPinFour;
+	private Preferances pref;
+	private long startTime;
+	private final long interval = 1 * 1000;
+	private MyCountDownTimer countDownTimer;
+	private JSONObject jsonObjectGetOtp;
+	private String responseCode;
+	
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.otp_screen);
+
+		pref = new Preferances();
+		mVerifyBtn = (Button) findViewById(R.id.button_verify);
+		mTimeTextView = (TextView) findViewById(R.id.time_textview);
+		mPinOneEditText = (EditText) findViewById(R.id.otpone_edittext);
+		mPinTwoEditText = (EditText) findViewById(R.id.otptwo_edittext);
+		mPinThreeEditText = (EditText) findViewById(R.id.otpthree_edittext);
+		mPinFourEditText = (EditText) findViewById(R.id.otpfour_edittext);
+		mVerifyBtn.setOnClickListener(this);
+		if (ConnectivityUtils.isConnectedMobile(this)
+				|| ConnectivityUtils.isConnectedWifi(this)) {
+			getOtp();
+		} else {
+			Toast.makeText(OTPScreen.this,
+					"Please check your network connection", Toast.LENGTH_LONG)
+					.show();
+		}
+		
+		mPinOneEditText.addTextChangedListener(new TextWatcher() {			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if(mPinOneEditText.getText().toString().length()==1){
+					mPinTwoEditText.requestFocus();
+					mPinTwoEditText.setCursorVisible(true);				
+				}
+			}			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,	int after) {	
+				
+			}			
+			@Override
+			public void afterTextChanged(Editable s) {				
+			}
+		});
+		
+		mPinTwoEditText.addTextChangedListener(new TextWatcher() {			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if(mPinTwoEditText.getText().toString().length()==1){
+					mPinThreeEditText.requestFocus();
+					mPinThreeEditText.setCursorVisible(true);				
+				}
+			}			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,	int after) {	
+				
+			}			
+			@Override
+			public void afterTextChanged(Editable s) {				
+			}
+		});
+		
+		mPinThreeEditText.addTextChangedListener(new TextWatcher() {			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if(mPinThreeEditText.getText().toString().length()==1){
+					mPinFourEditText.requestFocus();
+					mPinFourEditText.setCursorVisible(true);				
+				}
+			}			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,	int after) {	
+				
+			}			
+			@Override
+			public void afterTextChanged(Editable s) {				
+			}
+		});		
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.button_verify:
+			mStrPinOne = mPinOneEditText.getText().toString().trim();
+			mStrPinTwo = mPinTwoEditText.getText().toString().trim();
+			mStrPinThree = mPinThreeEditText.getText().toString().trim();
+			mStrPinFour = mPinFourEditText.getText().toString().trim();
+			String strOTP = mStrPinOne + mStrPinTwo + mStrPinThree
+					+ mStrPinFour;
+			otpVerification(strOTP.trim());
+			break;
+		default:
+			break;
+		}
+	}
+
+ public void getOtp() {
+  RequestQueue queue = Volley.newRequestQueue(this);
+  //String url = Constant.GET_OTP_URL;  
+  String url = Preferances.getOtpUrl(OTPScreen.this);  
+  StringRequest postRequest = new StringRequest(Method.POST, url,
+  new Response.Listener<String>() {
+  @Override
+  public void onResponse(String response) {
+  // response
+  Log.e(TAG, "Response From server:" + response);
+   try {
+		jsonObjectGetOtp = new JSONObject(response);
+		responseCode = jsonObjectGetOtp.getString("responseCode");
+		mLongTimeout = jsonObjectGetOtp.getLong("timeout");
+		//Log.e(TAG, "mLongTimeout:" +mLongTimeout);		
+		if (responseCode.equals("200")) {
+		 mStrResponseMobileNumber = jsonObjectGetOtp.getString("mobileNumber");
+		 mStrVerificationId = jsonObjectGetOtp.getString("verificationId");
+		// mLongTimeout = jsonObjectGetOtp.getLong("timeout");
+		mStrSmsCLI = jsonObjectGetOtp.getString("smsCLI");
+		pref.setVerificationCode(OTPScreen.this, mStrVerificationId);
+		// Timer countdown
+			
+		startTime = mLongTimeout * 1000;// 30 * 1000;
+		countDownTimer = new MyCountDownTimer(startTime, interval);
+		mTimeTextView.setText(mTimeTextView.getText() + String.valueOf(startTime / 1000));
+		countDownTimer.start();
+		}
+		else {
+		startTime = mLongTimeout * 1000;
+		countDownTimer = new MyCountDownTimer(startTime, interval);
+		mTimeTextView.setText(mTimeTextView.getText()+ String.valueOf(startTime / 1000));
+		countDownTimer.start();
+		//mStrErrorMessage = jsonObjectGetOtp.getString("errorMessage");
+		mStrErrorMessage = ErrorCode.errorMessage(responseCode);
+		Toast.makeText(OTPScreen.this, mStrErrorMessage, Toast.LENGTH_LONG).show();
+		mVerifyBtn.setEnabled(false);
+		}
+
+	 } catch (JSONException e) {
+		e.printStackTrace();
+		mStrErrorMessage = ErrorCode.errorMessage(responseCode);
+		Toast.makeText(OTPScreen.this, mStrErrorMessage, Toast.LENGTH_LONG).show();
+		mVerifyBtn.setEnabled(false);
+		}		
+     }
+	  }, new Response.ErrorListener() {
+		 @Override
+		 public void onErrorResponse(VolleyError error) {
+		 Log.e("ERROR", "error => " + error);
+		 mVerifyBtn.setEnabled(false);
+		}
+		}) {
+			@Override
+			public byte[] getBody() throws AuthFailureError {
+				String httpPostBody = "msisdn="
+						+ pref.getMsisdn(OTPScreen.this) + "&customerId="
+						+ pref.getCustomerId(OTPScreen.this)
+						+ "&isoCountryCode="
+						+ pref.getCountryCode(OTPScreen.this) + "&appKey="
+						+ pref.getAppKey(OTPScreen.this);
+				try {
+					httpPostBody = httpPostBody
+							+ "&randomFieldFilledWithAwkwardCharacters="
+							+ URLEncoder.encode("{{%stuffToBe Escaped/",
+									"UTF-8");
+
+				} catch (UnsupportedEncodingException exception) {
+					Log.e("ERROR", "exception", exception);
+					// return null and don't pass any POST string if you
+					// encounter encoding error
+					return null;
+				}
+				return httpPostBody.getBytes();
+			}
+		};
+		queue.add(postRequest);
+	}
+
+ private void otpVerification(final String strOtp) {
+
+  RequestQueue queue = Volley.newRequestQueue(this);
+  //String url = Constant.OTPVERIFY_URL;  
+  String url = Preferances.getOtpVerifyUrl(OTPScreen.this);  
+  String strParameter = "?verificationId="
+  + pref.getVerificationCode(OTPScreen.this) + "&customerId="
+  + pref.getCustomerId(OTPScreen.this) + "&code=" + strOtp
+  + "&appKey=" + pref.getAppKey(OTPScreen.this);
+  String finalUrl = url + strParameter;
+  Log.e(TAG, "finalUrl:" + finalUrl); 
+  
+  StringRequest postRequest = new StringRequest(Method.GET, finalUrl, new Response.Listener<String>() {
+	@Override
+	public void onResponse(String response) {
+	// response
+	Log.e(TAG, "Response:" + response);
+	try {
+		JSONObject jsonObjectVerifyOtp = new JSONObject(response);
+		String responseCode = jsonObjectVerifyOtp.getString("responseCode");
+		 if (responseCode.equals("200")) {
+			Intent successScreen = new Intent();
+			successScreen.setClass(OTPScreen.this, SuccessScreen.class);
+			startActivity(successScreen);
+			finish();
+			} 
+		 
+		 else if(responseCode.equals("701")){
+		   long longTimeout = jsonObjectVerifyOtp.getLong("timeout");
+		   long startTime = longTimeout * 1000;
+		   countDownTimer = new MyCountDownTimer(startTime, interval);
+		   mTimeTextView.setText(mTimeTextView.getText()+ String.valueOf(startTime / 1000));
+		   countDownTimer.start();
+		   String mStrErrorMessage = ErrorCode.errorMessage(responseCode);
+		   Toast.makeText(OTPScreen.this, mStrErrorMessage, Toast.LENGTH_LONG).show();
+		 }
+		 
+		 else {
+			//String mStrErrorMessage = jsonObjectVerifyOtp.getString("errorMessage");
+			String mStrErrorMessage = ErrorCode.errorMessage(responseCode);
+			Toast.makeText(OTPScreen.this, mStrErrorMessage, Toast.LENGTH_LONG).show();
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	 }, new Response.ErrorListener() {
+		@Override
+		public void onErrorResponse(VolleyError error) {
+		Log.e("ERROR", "error => " + error.toString());		
+		}
+		}) /*{
+
+		}*/;
+		queue.add(postRequest);
+	}
+
+	public class MyCountDownTimer extends CountDownTimer {
+		public MyCountDownTimer(long startTime, long interval) {
+			super(startTime, interval);
+		}
+
+		@Override
+		public void onFinish() {
+			mTimeTextView.setText("Time's up!");
+			// mVerifyBtn.setEnabled(false);
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			mTimeTextView.setText("Seconds remaining: " + millisUntilFinished
+					/ 1000);
+		}
+	}
+
+}

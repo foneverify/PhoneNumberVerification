@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:id="@+id/foneverify_image"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/foneverify_logo" />
+
+        <TextView
+            android:id="@+id/time_textview_callverify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/foneverify_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:text=""
+            android:textColor="@color/profile_gold"
+            android:textSize="@dimen/title_textsize" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_callverify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_textview_callverify"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:id="@+id/top_text_callverify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressbar_callverify"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/otptext_margin"
+            android:layout_marginRight="@dimen/otptext_margin"
+            android:text="Verifyng your number....."
+            android:textSize="@dimen/title_textsize" />
+    </RelativeLayout>
+
+</LinearLayout>

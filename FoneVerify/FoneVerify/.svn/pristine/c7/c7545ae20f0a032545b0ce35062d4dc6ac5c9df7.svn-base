@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+     >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+         >
+
+        
+         <ImageView
+        android:id="@+id/foneverify_image"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="@drawable/foneverify_logo"
+        android:layout_centerHorizontal="true"/>
+        
+        
+        <TextView
+            android:id="@+id/top_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_below="@id/foneverify_image"
+            android:layout_marginLeft="@dimen/otptext_margin"
+            android:layout_marginRight="@dimen/otptext_margin"
+            android:text="@string/verify_text"            
+            android:textSize="@dimen/title_textsize" 
+            android:layout_marginTop="30dp"/>
+        
+        <EditText
+                android:id="@+id/otp_edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"                
+                android:paddingLeft="@dimen/otpedittext_paddingleft" 
+                android:layout_below="@id/top_text"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"/>
+
+       
+        <TextView
+            android:id="@+id/time_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otp_edittext"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:text=""
+            android:textColor="@color/profile_gold"
+            android:textSize="@dimen/title_textsize" />
+
+        <Button
+            android:id="@+id/button_verify"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_textview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:text="@string/submit"
+            android:textSize="@dimen/button_textsize" />
+            
+            
+            <ProgressBar
+            android:id="@+id/progress_otpscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_verify"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edittext_margintop"            
+            android:visibility="invisible" />
+            
+    </RelativeLayout>
+
+</LinearLayout>

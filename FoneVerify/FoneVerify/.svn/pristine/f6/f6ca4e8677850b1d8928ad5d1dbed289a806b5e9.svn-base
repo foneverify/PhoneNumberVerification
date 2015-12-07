@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" 
+    android:background="@color/background_color">
+
+    <ImageView
+        android:layout_width="@dimen/success_image"
+        android:layout_height="@dimen/success_image"
+        android:background="@drawable/success" >
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/successscreen_text"
+        android:textSize="@dimen/title_textsize" 
+        android:textStyle="bold"
+        android:textColor="@color/white_color"/>
+
+</LinearLayout>
