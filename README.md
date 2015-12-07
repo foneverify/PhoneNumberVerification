@@ -3,7 +3,7 @@ Verifying the user phone number using APIs
 
 
 Key Features of the solution
-•	Smooth Integration: REST APIs for easy integration
+•	Smooth Integration
 •	One solution for all: Foneverify works with all channels like Web, WAP & App
 •	Instant Global Reach: Integration with Foneverify allows you to verify users across 200+ countries from day 1.
 •	Automatic fall back: For example if a user does not enter the OTP in XX seconds the system would switchover to a fall back channel to complete the verification.
