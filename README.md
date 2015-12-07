@@ -3,7 +3,6 @@ Verifying the user phone number using APIs
 
 
 
-
 Key Features of the solution
 
 •	Smooth Integration
