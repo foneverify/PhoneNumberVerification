@@ -4,9 +4,12 @@ public class Constant {
 
 	public static final String OTPVERIFY_URL_NEW = "http://apifv.foneverify.com/U2opia_Verify/v1.0/flow/update";
 	public static final String OTP_URL_NEW = "http://apifv.foneverify.com/U2opia_Verify/v1.0/flow/sms";
-	public static final String APP_SECRET = "XXABCEF226";
-	public static final String CUSTOMER_ID_NEW = "SSLPSU45TY";
-	public static final String COUNTRY_CODE_NEW = "IN";
+	//replace below values with your app key and custoemr id
+	public static final String APP_SECRET = "XXXXXXXXXXXXXXX";
+	public static final String CUSTOMER_ID_NEW = "XXXXXXXXXXXXX";
+	
+	//replace below value with your country code
+	public static final String COUNTRY_CODE_NEW = "XX";
 
 	public static final String CUSTOMER_ID_PREFERENCE = "customerIdPreference";
 	public static final String CUSTOMER_ID = "customerId";
