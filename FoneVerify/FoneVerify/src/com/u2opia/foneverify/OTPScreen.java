@@ -47,6 +47,7 @@ public class OTPScreen extends Activity implements OnClickListener {
 	private String mStrErrorMessage;	
 	private static final String TAG = "OTPScreen";
 	private String mStrVerificationId, mStrResponseMobileNumber;//mStrSmsCLI
+	//default timeout for each customer is set to 90 seconds
 	private long mLongTimeout = 90;
 	private String mStrPinOne;
 	private Preferances pref;
