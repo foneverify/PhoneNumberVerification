@@ -1,6 +1,7 @@
 # PhoneNumberVerification
 Verifying the user phone number using APIs for Android applications
-www.foneverify.com
+
+Visit www.foneverify.com to know more
 
 
 
