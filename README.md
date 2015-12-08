@@ -1,5 +1,5 @@
 # PhoneNumberVerification
-Verifying the user phone number using APIs
+Verifying the user phone number using APIs for Android applications
 
 
 
