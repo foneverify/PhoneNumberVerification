@@ -33,6 +33,7 @@ public class CallScreen extends Activity {
 	private static final String TAG = "CallScreen";
 	private ProgressBar mProgressBar;
 	private TextView mTimeTextView;
+	//default timeout for each customer is set to 90 seconds
 	private long mLongTimeout = 90;
 	private long startTime;
 	private MyCountDownTimer countDownTimer;
